@@ -5,6 +5,7 @@ def parse_input(user_input):
 
     return cmd, *args
 
+
 def input_error(func):
     def inner(*args, **kwargs):
         try:
@@ -18,6 +19,7 @@ def input_error(func):
 
     return inner
 
+
 @input_error
 def add_contact(args, contacts):
     name, phone = args
@@ -30,7 +32,7 @@ def add_contact(args, contacts):
 @input_error
 def change_contact(args, contacts):
     name, phone = args
-    
+
     contacts[name]
     contacts[name] = phone
 

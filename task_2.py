@@ -1,6 +1,7 @@
 from collections import UserDict
 import re
 
+
 class Field:
     def __init__(self, value):
         self.value = value
@@ -8,16 +9,19 @@ class Field:
     def __str__(self):
         return str(self.value)
 
+
 class Name(Field):
     pass
 
+
 class Phone(Field):
-    def __init__(self, value:str):
+    def __init__(self, value: str):
         if not re.match(r"\d{10}", value):
             raise ValueError
 
         super().__init__(value)
     pass
+
 
 class Record:
     def __init__(self, name):
@@ -44,16 +48,16 @@ class Record:
     def __str__(self):
         return f"Contact name: {self.name.value}, phones: {'; '.join(p.value for p in self.phones)}"
 
-class AddressBook(UserDict):
-    def add_record(self, record:Record):
-        self.data[record.name.value] = record
-    
-    def find(self, name:str):
-        return self.data[name]
-    
-    def delete(self, name:str):
-        self.data.pop(name)
 
+class AddressBook(UserDict):
+    def add_record(self, record: Record):
+        self.data[record.name.value] = record
+
+    def find(self, name: str):
+        return self.data[name]
+
+    def delete(self, name: str):
+        self.data.pop(name)
 
 
 def main():
@@ -90,6 +94,7 @@ def main():
     # Видалення запису Jane
     book.delete("Jane")
     print("done")
-    
+
+
 if __name__ == '__main__':
     main()
